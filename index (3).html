@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ferols Tours &amp; Safaris &mdash; Premium East African Experiences</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root{--green:#1B4D2E;--gd:#0F2D1A;--gm:#245C38;--gold:#C9A020;--glt:#E8BC3C;--gdim:#8C6E10;--cream:#F7F0E3;--sand:#EDE0C4;--sandd:#D6C49A;--char:#1A1A1A;--white:#FFFFFF;--muted:#6B6350;--r:6px;--sh:0 8px 40px rgba(0,0,0,.18);--cs:0 4px 24px rgba(0,0,0,.10)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}body{font-family:'DM Sans',sans-serif;color:var(--char);overflow-x:hidden}
+    h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2}
+    a{text-decoration:none;color:inherit}button{font-family:inherit;cursor:pointer;border:none;outline:none}img{display:block;max-width:100%}
+    .con{max-width:1180px;margin:0 auto;padding:0 24px}
+    .lbl{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+    .stitle{font-size:clamp(1.9rem,4vw,2.8rem);font-weight:700;color:var(--gd);margin-bottom:14px}
+    .stitle em{font-style:italic;color:var(--gdim)}.shdr{text-align:center;margin-bottom:56px}
+    .sdesc{font-size:.96rem;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.75}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r);font-size:.88rem;font-weight:600;letter-spacing:.04em;transition:all .25s;cursor:pointer;border:none}
+    .btn-gold{background:var(--gold);color:var(--char)}.btn-gold:hover{background:var(--glt);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,160,32,.35)}
+    .btn-green{background:var(--green);color:var(--white)}.btn-green:hover{background:var(--gm);transform:translateY(-2px)}
+    .btn-ow{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r);font-size:.88rem;font-weight:600;color:var(--white);border:1.5px solid rgba(255,255,255,.6);transition:all .25s}.btn-ow:hover{background:rgba(255,255,255,.12)}
+    .btn-og{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:var(--r);font-size:.88rem;font-weight:600;color:var(--green);border:1.5px solid var(--green);transition:all .25s}.btn-og:hover{background:var(--green);color:var(--white)}
+    .btn-wa{background:#25D366;color:var(--white);display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:var(--r);font-weight:700;font-size:.95rem;transition:all .25s}.btn-wa:hover{background:#1EBE5C;transform:translateY(-2px);box-shadow:0 8px 24px rgba(37,211,102,.35)}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:900;padding:16px 0;transition:background .3s,padding .3s,box-shadow .3s}
+    #nav.scrolled{background:rgba(12,26,14,.96);backdrop-filter:blur(12px);padding:10px 0;box-shadow:0 2px 20px rgba(0,0,0,.3)}
+    .nav-in{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .nav-logo{display:flex;align-items:center;gap:10px}.nav-logo img{width:52px;height:52px;object-fit:contain}
+    .nav-tag{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+    .nav-links{display:flex;align-items:center;gap:22px;list-style:none}
+    .nav-links a{font-size:.82rem;font-weight:500;color:rgba(255,255,255,.82);letter-spacing:.03em;transition:color .2s}.nav-links a:hover{color:var(--gold)}
+    .hbg{display:none;flex-direction:column;gap:5px;background:transparent;padding:4px}.hbg span{width:24px;height:2px;background:var(--white);border-radius:2px}
+    .mob-menu{display:none;position:fixed;inset:0;background:var(--gd);z-index:950;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+    .mob-menu.open{display:flex}.mob-menu a{font-family:'Playfair Display',serif;font-size:1.65rem;color:var(--white);font-style:italic}.mob-menu a:hover{color:var(--gold)}
+    .mob-x{position:absolute;top:24px;right:24px;background:transparent;color:var(--white);font-size:2rem;line-height:1}
+    @media(max-width:860px){.nav-links,.nav-cta{display:none}.hbg{display:flex}}
+    /* HERO */
+    #hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:80px;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,12,.3) 0%,rgba(10,20,12,.15) 40%,rgba(10,20,12,.75) 80%,rgba(10,20,12,.92) 100%),url('images/hero.jpg') center/cover no-repeat;transform:scale(1.04);animation:hzoom 12s ease-out forwards}
+    @keyframes hzoom{to{transform:scale(1)}}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,160,32,.18);border:1px solid rgba(201,160,32,.5);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--glt);margin-bottom:20px;backdrop-filter:blur(6px)}
+    .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:bp 2s infinite}
+    @keyframes bp{0%,100%{opacity:1}50%{opacity:.3}}
+    .hero-c{position:relative;z-index:2}
+    .hero-h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:700;color:var(--white);line-height:1.08;max-width:760px;margin-bottom:18px}
+    .hero-h1 em{font-style:italic;color:var(--glt)}.hero-sub{font-size:clamp(.94rem,2vw,1.08rem);color:rgba(255,255,255,.8);max-width:500px;line-height:1.7;margin-bottom:34px}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:48px}
+    .hero-stats{display:flex;gap:36px;flex-wrap:wrap;padding-top:28px;border-top:1px solid rgba(255,255,255,.15)}
+    .hsv{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--glt)}.hsl{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);margin-top:2px}
+    .scroll-h{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .scroll-h span{font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+    .scroll-m{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:12px;position:relative}
+    .scroll-m::after{content:'';width:3px;height:6px;background:var(--gold);border-radius:2px;position:absolute;top:6px;left:50%;transform:translateX(-50%);animation:sm 1.8s infinite}
+    @keyframes sm{0%{opacity:1;top:6px}100%{opacity:0;top:20px}}
+    .ann{background:var(--gold);color:var(--char);text-align:center;padding:10px 24px;font-size:.78rem;font-weight:600;letter-spacing:.04em}
+    /* EXPERIENCES */
+    #experiences{padding:100px 0;background:var(--cream)}
+    .exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+    .exp-card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:var(--cs);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
+    .exp-card:hover{transform:translateY(-8px);box-shadow:var(--sh)}
+    .exp-img{height:220px;background-size:cover;background-position:center;position:relative}
+    .exp-tag{position:absolute;top:14px;left:14px;background:var(--gold);color:var(--char);font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+    .exp-body{padding:24px;flex:1;display:flex;flex-direction:column}.exp-title{font-size:1.22rem;font-weight:700;color:var(--gd);margin-bottom:8px}
+    .exp-hook{font-size:.87rem;color:var(--muted);line-height:1.65;margin-bottom:18px;flex:1}
+    .exp-foot{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--sand)}
+    .exp-price strong{display:block;font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--green);font-weight:700}
+    .exp-price small{font-size:.75rem;color:var(--muted)}
+    /* WHY */
+    #why{padding:100px 0;background:var(--gd);position:relative;overflow:hidden}
+    #why::before{content:'';position:absolute;inset:0;background:url('images/why-bg.jpg') center/cover no-repeat;opacity:.07}
+    .why-z{position:relative;z-index:1}.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    @media(max-width:768px){.why-grid{grid-template-columns:1fr;gap:40px}}
+    .why-pts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:8px}
+    @media(max-width:480px){.why-pts{grid-template-columns:1fr}}
+    .why-pt{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:18px;transition:background .3s}.why-pt:hover{background:rgba(255,255,255,.1)}
+    .why-pt-i{font-size:1.5rem;margin-bottom:9px}.why-pt-t{font-size:.86rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .why-pt-d{font-size:.76rem;color:rgba(255,255,255,.5);line-height:1.6}
+    .why-imgs{position:relative;height:480px}
+    @media(max-width:768px){.why-imgs{height:360px;margin-top:20px}}
+    .why-img{position:absolute;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .why-img img{width:100%;height:100%;object-fit:cover;display:block}
+    .why-img-a{width:72%;height:300px;top:0;right:0;z-index:1}
+    .why-img-b{width:58%;height:250px;bottom:0;left:0;z-index:2}
+    .why-badge{position:absolute;top:50%;left:calc(58% - 20px);transform:translateY(-50%);background:var(--gold);color:var(--char);border-radius:10px;padding:14px 18px;text-align:center;box-shadow:0 8px 28px rgba(201,160,32,.4);white-space:nowrap;z-index:10}
+    .why-bn{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1}.why-bt{font-size:.7rem;font-weight:600;letter-spacing:.06em}
+    /* DESTINATIONS */
+    #destinations{padding:100px 0;background:var(--white)}
+    .dest-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:260px 260px;gap:14px}
+    @media(max-width:768px){.dest-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.dest-item{grid-column:span 1!important;grid-row:span 1!important;height:200px}}
+    .dest-item{position:relative;border-radius:10px;overflow:hidden;cursor:pointer}
+    .dest-item:nth-child(1){grid-column:span 5}.dest-item:nth-child(2){grid-column:span 4}
+    .dest-item:nth-child(3){grid-column:span 3;grid-row:span 2}.dest-item:nth-child(4){grid-column:span 3}.dest-item:nth-child(5){grid-column:span 6}
+    .dest-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.dest-item:hover img{transform:scale(1.07)}
+    .dest-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,20,12,.85) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+    .dest-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white)}.dest-sub{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--gold);margin-top:3px}
+    .dest-arr{position:absolute;top:14px;right:14px;width:32px;height:32px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.9rem;opacity:0;transition:opacity .3s;backdrop-filter:blur(4px)}
+    .dest-item:hover .dest-arr{opacity:1}
+    /* DEPARTURES */
+    #departures{padding:100px 0;background:var(--cream)}
+    .dep-regions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+    .dep-reg{padding:9px 20px;border-radius:100px;font-size:.82rem;font-weight:600;background:var(--sand);color:var(--char);cursor:pointer;border:none;transition:all .2s}
+    .dep-reg.active{background:var(--green);color:var(--white)}.dep-note-sm{text-align:center;font-size:.78rem;color:var(--muted);margin-bottom:44px}
+    .dep-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:22px}
+    .dep-card{background:var(--white);border-radius:12px;border:1px solid var(--sand);overflow:hidden;box-shadow:var(--cs);transition:transform .3s,box-shadow .3s}
+    .dep-card:hover{transform:translateY(-4px);box-shadow:var(--sh)}.dep-stripe{height:5px}.dep-body{padding:22px 24px}
+    .dep-meta{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .dep-spots{font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:4px}
+    .dep-spots.hot{background:rgba(201,160,32,.15);color:var(--gdim)}.dep-spots.open{background:rgba(27,77,46,.1);color:var(--green)}.dep-spots.monthly{background:rgba(100,60,20,.12);color:#7a4a18}
+    .dep-dur{font-size:.72rem;color:var(--muted)}.dep-title{font-family:'Playfair Display',serif;font-size:1.12rem;color:var(--gd);margin-bottom:4px}
+    .dep-desc{font-size:.8rem;color:var(--muted);margin-bottom:16px;line-height:1.55}
+    .dep-info{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+    .dep-info label{display:block;font-size:.63rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+    .dep-info strong{font-size:.86rem;color:var(--char);font-weight:700}.dep-info strong.price{color:var(--green)}
+    .itin-toggle{display:flex;align-items:center;justify-content:space-between;background:var(--cream);border:1px solid var(--sand);border-radius:6px;padding:10px 14px;cursor:pointer;font-size:.82rem;font-weight:600;color:var(--green);width:100%;text-align:left;transition:background .2s}
+    .itin-toggle:hover{background:var(--sand)}.itin-toggle .arr{font-size:.7rem;transition:transform .3s}.itin-toggle.open .arr{transform:rotate(180deg)}
+    .itin-body{display:none;background:var(--cream);border:1px solid var(--sand);border-top:none;border-radius:0 0 6px 6px;padding:16px;margin-bottom:0}
+    .itin-body.open{display:block}.itin-day{margin-bottom:12px}.itin-day:last-child{margin-bottom:0}
+    .itin-dl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gdim);margin-bottom:4px}
+    .itin-dt{font-size:.88rem;font-weight:700;color:var(--gd);margin-bottom:3px}.itin-dd{font-size:.78rem;color:var(--muted);line-height:1.55}
+    .dep-btn{display:block;text-align:center;background:var(--green);color:var(--white);padding:11px;border-radius:6px;font-size:.84rem;font-weight:600;letter-spacing:.04em;transition:background .2s;margin-top:12px}
+    .dep-btn:hover{background:var(--gm)}.dep-note{text-align:center;margin-top:44px}.dep-note p{font-size:.9rem;color:var(--muted);margin-bottom:18px}
+    /* STAYCATION */
+    #staycation{padding:100px 0;background:var(--white)}
+    .stay-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    @media(max-width:768px){.stay-grid{grid-template-columns:1fr}}
+    .stay-left{position:sticky;top:100px}.stay-desc{font-size:.94rem;color:var(--muted);line-height:1.75;margin:14px 0 24px}
+    .stay-feats{display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+    .stay-feat{display:flex;align-items:center;gap:12px;font-size:.87rem}.stay-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0}
+    .stay-photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}.stay-photo{border-radius:8px;overflow:hidden;height:150px}
+    .stay-photo:first-child{grid-column:span 2;height:210px}.stay-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.stay-photo:hover img{transform:scale(1.06)}
+    .stay-pkgs{display:flex;flex-direction:column;gap:20px}
+    .stay-pkg{background:var(--cream);border-radius:12px;padding:26px;box-shadow:var(--cs);border:2px solid transparent;transition:border-color .3s,transform .3s}
+    .stay-pkg.feat{border-color:var(--gold);background:linear-gradient(135deg,#fffdf5,#fff)}.stay-pkg:hover{transform:translateY(-4px)}
+    .stay-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+    .stay-pn{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:700;color:var(--gd)}
+    .stay-pb{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--gold);color:var(--char);padding:3px 8px;border-radius:4px}
+    .stay-price{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;color:var(--green);margin-bottom:14px}
+    .stay-price small{font-size:.82rem;font-family:'DM Sans',sans-serif;color:var(--muted)}
+    .stay-items{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:18px}
+    .stay-items li{font-size:.83rem;color:var(--muted);display:flex;align-items:center;gap:9px}
+    .stay-items li::before{content:'✓';color:var(--green);font-weight:700;font-size:.78rem;flex-shrink:0}
+    .addons{background:var(--cream);border-radius:10px;padding:22px}.addons h4{font-size:.95rem;color:var(--gd);margin-bottom:13px}
+    .atags{display:flex;flex-wrap:wrap;gap:8px}.atag{background:var(--sand);color:var(--char);padding:6px 14px;border-radius:100px;font-size:.77rem;font-weight:500}
+    /* TESTIMONIALS */
+    #testimonials{padding:100px 0;background:var(--cream)}
+    .tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+    .tc{background:var(--white);border-radius:14px;padding:30px 26px}
+    .tq{font-family:'Playfair Display',serif;font-size:3.5rem;color:var(--gold);line-height:1;margin-bottom:-6px}
+    .tt{font-size:.9rem;line-height:1.75;color:var(--char);margin-bottom:22px;font-style:italic}
+    .ta{display:flex;align-items:center;gap:12px}
+    .tav{width:42px;height:42px;border-radius:50%;background:var(--sandd);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--green);flex-shrink:0}
+    .tn{font-weight:700;font-size:.86rem}.tr{font-size:.74rem;color:var(--muted);margin-top:2px}.ts{color:var(--gold);font-size:.82rem;letter-spacing:2px;margin-bottom:2px}
+    /* CTA */
+    #cta-final{padding:120px 0;position:relative;overflow:hidden;text-align:center}
+    .cta-bg{position:absolute;inset:0;background:linear-gradient(rgba(10,20,12,.78),rgba(10,20,12,.88)),url('images/cta-bg.jpg') center/cover no-repeat}
+    .cta-in{position:relative;z-index:2;max-width:680px;margin:0 auto}
+    .cta-h2{font-size:clamp(2rem,5vw,3.4rem);font-weight:700;color:var(--white);line-height:1.12;margin-bottom:16px}
+    .cta-h2 em{font-style:italic;color:var(--glt)}.cta-p{color:rgba(255,255,255,.7);font-size:1rem;line-height:1.7;margin-bottom:38px}
+    .cta-btns{display:flex;justify-content:center;flex-wrap:wrap;gap:14px}
+    /* FOOTER */
+    #footer{background:var(--char);padding:64px 0 28px}
+    .fg{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px}
+    @media(max-width:900px){.fg{grid-template-columns:1fr 1fr;gap:30px}}@media(max-width:500px){.fg{grid-template-columns:1fr}}
+    .flogo{display:flex;align-items:center;gap:10px;margin-bottom:14px}.flogo img{width:52px;height:52px;object-fit:contain}
+    .ftag{font-size:.62rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase}
+    .fab2{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.7;margin-bottom:20px}
+    .fsocs{display:flex;gap:10px}
+    .fsoc{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.78rem;color:rgba(255,255,255,.55);transition:all .2s;font-weight:700}
+    .fsoc:hover{background:var(--gold);color:var(--char)}.fc h5{font-size:.7rem;text-transform:uppercase;letter-spacing:.18em;color:var(--gold);margin-bottom:16px}
+    .fl{list-style:none;display:flex;flex-direction:column;gap:9px}.fl a{font-size:.83rem;color:rgba(255,255,255,.48);transition:color .2s}.fl a:hover{color:var(--white)}
+    .fct{display:flex;flex-direction:column;gap:10px}.fci{display:flex;align-items:flex-start;gap:10px}
+    .fci-i{color:var(--gold);font-size:.88rem;margin-top:1px;flex-shrink:0}.fci-t{font-size:.81rem;color:rgba(255,255,255,.48);line-height:1.55}
+    .fbot{border-top:1px solid rgba(255,255,255,.08);padding-top:22px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+    .fcp{font-size:.76rem;color:rgba(255,255,255,.28)}.flv{font-size:.76rem;color:rgba(255,255,255,.28)}.flv span{color:var(--gold)}
+    /* FAB */
+    .wa-fab{position:fixed;bottom:28px;right:24px;z-index:800;background:#25D366;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(37,211,102,.5);transition:transform .25s,box-shadow .25s;animation:fp .5s 1.5s cubic-bezier(.175,.885,.32,1.275) both}
+    @keyframes fp{from{transform:scale(0) rotate(-45deg)}to{transform:scale(1) rotate(0)}}.wa-fab:hover{transform:scale(1.1);box-shadow:0 10px 30px rgba(37,211,102,.55)}
+    .wa-fab svg{width:28px;height:28px;fill:white}.wa-pulse{position:absolute;inset:-6px;border-radius:50%;border:2px solid #25D366;animation:wap 2.2s infinite;pointer-events:none}
+    @keyframes wap{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.7)}}
+  </style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="con">
+    <div class="nav-in">
+      <a href="#" class="nav-logo">
+        <img src="logo.jpg" alt="Ferols Tours and Safaris" />
+        <span class="nav-tag">Premium East African Travel</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#experiences">Experiences</a></li>
+        <li><a href="#destinations">Destinations</a></li>
+        <li><a href="#departures">Departures</a></li>
+        <li><a href="#staycation">Staycations</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#footer">Contact</a></li>
+      </ul>
+      <a href="https://wa.me/254720265805?text=Hello" target="_blank" class="btn btn-gold nav-cta" style="padding:10px 20px;font-size:.82rem">Book on WhatsApp</a>
+      <button class="hbg" id="navToggle"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-x" id="mobClose">&#x2715;</button>
+  <a href="#experiences" class="ml">Experiences</a>
+  <a href="#destinations" class="ml">Destinations</a>
+  <a href="#departures" class="ml">Departures</a>
+  <a href="#staycation" class="ml">Staycations</a>
+  <a href="#testimonials" class="ml">Reviews</a>
+  <a href="#footer" class="ml">Contact</a>
+  <a href="https://wa.me/254720265805" target="_blank" class="btn btn-gold" style="margin-top:8px">Book on WhatsApp</a>
+</div>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="con">
+    <div class="hero-c">
+      <div class="hero-badge">&#127757; Nairobi &middot; Kenya &middot; East Africa</div>
+      <h1 class="hero-h1">Experience <em>Africa</em><br>Through Curated<br>Safari Adventures</h1>
+      <p class="hero-sub">Premium safaris, weekend getaways, and luxury staycations crafted for unforgettable moments in East Africa.</p>
+      <div class="hero-btns">
+        <a href="#experiences" class="btn btn-gold">&#129409; Explore Safaris</a>
+        <a href="https://wa.me/254720265805?text=Hello%2C%20I%27d%20like%20to%20book." target="_blank" class="btn-ow">&#128172; Book on WhatsApp</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hsv">100%</div><div class="hsl">Personalised Service</div></div>
+        <div><div class="hsv">12+</div><div class="hsl">Destinations</div></div>
+        <div><div class="hsv">5&#9733;</div><div class="hsl">Rated Experiences</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-h"><div class="scroll-m"></div><span>Scroll to explore</span></div>
+</section>
+
+<div class="ann">&#127807; Book any safari this month and get complimentary airport transfers &mdash; Limited spots. WhatsApp us now!</div>
+
+<section id="experiences">
+  <div class="con">
+    <div class="shdr reveal">
+      <span class="lbl">What We Offer</span>
+      <h2 class="stitle">Journeys Crafted for <em>Every Soul</em></h2>
+      <p class="sdesc">From sunrise game drives to private city escapes &mdash; experiences that stay with you long after you&rsquo;re home.</p>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-card reveal d1">
+        <div class="exp-img" style="background-image:url('images/exp-safari.jpg')"><span class="exp-tag">Most Popular</span></div>
+        <div class="exp-body">
+          <h3 class="exp-title">1-Day Safari Escapes</h3>
+          <p class="exp-hook">Wake up in Nairobi and be in the wild by sunrise. Our expertly guided day safaris into Nairobi National Park, Lake Nakuru, or Amboseli are perfect for those short on time but big on dreams.</p>
+          <div class="exp-foot">
+            <div class="exp-price"><strong>From KES 8,500</strong><small>per person</small></div>
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27m%20interested%20in%20a%201-Day%20Safari." target="_blank" class="btn btn-green" style="padding:10px 16px;font-size:.8rem">Enquire &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card reveal d2">
+        <div class="exp-img" style="background-image:url('images/exp-weekend.jpg')"><span class="exp-tag">Best Value</span></div>
+        <div class="exp-body">
+          <h3 class="exp-title">Weekend Getaways</h3>
+          <p class="exp-hook">Two days. One unforgettable story. Hell&rsquo;s Gate, the flamingos of Naivasha, or the elephant herds of Amboseli &mdash; our weekend packages are pure magic from Nairobi.</p>
+          <div class="exp-foot">
+            <div class="exp-price"><strong>From KES 14,000</strong><small>per person</small></div>
+            <a href="https://wa.me/254720265805?text=Hi%2C%20I%27m%20interested%20in%20a%20Weekend%20Getaway." target="_blank" class="btn btn-green" style="padding:10px 16px;font-size:.8rem">Enquire &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <div class="exp-card reveal d3">
+        <div class="exp-img" style="background-image:url('images/exp-stay.jpg')"><span class="exp-tag">New</span></div>
+        <div class="exp-body">
+          <h3 class="exp-title">Staycation Experiences</h3>
+          <p class="exp-hook">Stay in the city, feel worlds away. Curated luxury Airbnb setups with private chef, romantic d&eacute;cor, and photography &mdash; perfect for anniversaries and birthdays in Nairobi.</p>
+          <div class="exp-foot">
+            <div class="exp-price"><strong>From KES 12,000</strong><small>per night</small></div>
+            <a href="#staycation" class="btn btn-green" style="padding:10px 16px;font-size:.8rem">View Options &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="con why-z">
+    <div class="why-grid">
+      <div>
+        <span class="lbl reveal">Why Choose Us</span>
+        <h2 class="stitle reveal" style="color:var(--white);margin-bottom:16px">Built on Trust.<br><em>Driven by Passion.</em></h2>
+        <p class="reveal" style="color:rgba(255,255,255,.68);line-height:1.75;font-size:.94rem;margin-bottom:30px">We&rsquo;re not a booking engine. We&rsquo;re your personal East Africa travel partner &mdash; local, passionate, and backed by a team with over 8 years of combined experience across Kenyan and East African tourism.</p>
+        <div class="why-pts">
+          <div class="why-pt reveal d1"><div class="why-pt-i">&#128506;&#65039;</div><div class="why-pt-t">Local Expertise</div><div class="why-pt-d">Born and based in Nairobi &mdash; we know Kenya from the inside out.</div></div>
+          <div class="why-pt reveal d2"><div class="why-pt-i">&#128274;</div><div class="why-pt-t">Vetted Service Providers</div><div class="why-pt-d">Every partner, lodge, and ground service we use is personally selected and trusted.</div></div>
+          <div class="why-pt reveal d3"><div class="why-pt-i">&#128172;</div><div class="why-pt-t">WhatsApp-First</div><div class="why-pt-d">Reach a human instantly &mdash; no call centres, no bots, just us.</div></div>
+          <div class="why-pt reveal d4"><div class="why-pt-i">&#128142;</div><div class="why-pt-t">Transparent Pricing</div><div class="why-pt-d">No hidden fees. The price we quote is the price you pay.</div></div>
+        </div>
+      </div>
+      <div class="why-imgs reveal">
+        <div class="why-img why-img-a"><img src="images/why-1.jpg" alt="Kenya Wildlife" loading="lazy" /></div>
+        <div class="why-img why-img-b"><img src="images/why-2.jpg" alt="Kenya Landscape" loading="lazy" /></div>
+        <div class="why-badge"><div class="why-bn">8+</div><div class="why-bt">Yrs Team Experience</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="destinations">
+  <div class="con">
+    <div class="shdr reveal">
+      <span class="lbl">Explore Kenya</span>
+      <h2 class="stitle">Iconic <em>Kenyan</em> Destinations</h2>
+      <p class="sdesc">From the golden plains of the Mara to the red-dust wilderness of Tsavo &mdash; each a world unto itself.</p>
+    </div>
+    <div class="dest-grid">
+      <div class="dest-item reveal"><img src="images/dest-mara.jpg" alt="Masai Mara" loading="lazy" /><div class="dest-ov"><div class="dest-name">Masai Mara</div><div class="dest-sub">Kenya &mdash; The Great Migration</div></div><div class="dest-arr">&rarr;</div></div>
+      <div class="dest-item reveal d1"><img src="images/dest-amboseli.jpg" alt="Amboseli" loading="lazy" /><div class="dest-ov"><div class="dest-name">Amboseli</div><div class="dest-sub">Kenya &mdash; Elephants &amp; Kilimanjaro</div></div><div class="dest-arr">&rarr;</div></div>
+      <div class="dest-item reveal d2"><img src="images/dest-nanyuki.jpg" alt="Nanyuki" loading="lazy" /><div class="dest-ov"><div class="dest-name">Nanyuki</div><div class="dest-sub">Kenya &mdash; Mt. Kenya &amp; Ol Pejeta</div></div><div class="dest-arr">&rarr;</div></div>
+      <div class="dest-item reveal d3"><img src="images/dest-naivasha.jpg" alt="Naivasha" loading="lazy" /><div class="dest-ov"><div class="dest-name">Naivasha</div><div class="dest-sub">Kenya &mdash; Lakes &amp; Hell&rsquo;s Gate</div></div><div class="dest-arr">&rarr;</div></div>
+      <div class="dest-item reveal d4"><img src="images/dest-tsavo.jpg" alt="Tsavo" loading="lazy" /><div class="dest-ov"><div class="dest-name">Tsavo</div><div class="dest-sub">Kenya &mdash; The Red Elephants</div></div><div class="dest-arr">&rarr;</div></div>
+    </div>
+    <div style="text-align:center;margin-top:40px"><a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20explore%20your%20destinations." target="_blank" class="btn-og">View All Destinations &rarr;</a></div>
+  </div>
+</section>
+
+<section id="departures">
+  <div class="con">
+    <div class="shdr reveal">
+      <span class="lbl">Scheduled Group Trips</span>
+      <h2 class="stitle">Weekly <em>Departures</em></h2>
+      <p class="sdesc">Join a shared group departure and save &mdash; or customise any trip for your group. Tap a card to see the sample itinerary.</p>
+    </div>
+    <div class="dep-regions reveal">
+      <button class="dep-reg active" data-region="all">All Trips</button>
+      <button class="dep-reg" data-region="nairobi">Nairobi Region</button>
+      <button class="dep-reg" data-region="western">Western Kenya</button>
+      <button class="dep-reg" data-region="coast">Coast</button>
+      <button class="dep-reg" data-region="border">Cross-Border</button>
+    </div>
+    <p class="dep-note-sm reveal">&#128197; Some trips share departure dates &bull; All prices per person sharing &bull; Private departures available for groups of 4+</p>
+    <div class="dep-grid">
+
+      <div class="dep-card reveal" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,var(--green),var(--gold))"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots hot">2 Spots Left</span><span class="dep-dur">2 Days / 1 Night</span></div>
+          <h3 class="dep-title">Masai Mara Weekend</h3>
+          <p class="dep-desc">Game drives, Big Five wildlife, and golden savanna sunsets in Kenya&rsquo;s most iconic reserve.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Every Friday</strong></div><div><label>Return</label><strong>Sunday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 22,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1 &mdash; Friday</div><div class="itin-dt">Nairobi &rarr; Masai Mara</div><div class="itin-dd">Depart early morning. Afternoon game drive on arrival. Dinner and overnight at camp.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2 &mdash; Saturday</div><div class="itin-dt">Full Day Game Drives</div><div class="itin-dd">Morning and afternoon drives. Big Five search. Sundowner at viewpoint. Overnight at camp.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3 &mdash; Sunday</div><div class="itin-dt">Morning Drive &rarr; Nairobi</div><div class="itin-dd">Early drive before breakfast. Depart for Nairobi, arrive evening. Includes: transport, accommodation, park fees, meals.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Masai%20Mara%20Weekend.%20Please%20share%20available%20dates." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d1" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,var(--gold),#e8a020)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">1 Day Trip</span></div>
+          <h3 class="dep-title">Amboseli Day Safari</h3>
+          <p class="dep-desc">Kenya&rsquo;s most iconic view &mdash; elephants roaming against the backdrop of Kilimanjaro.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Sat &amp; Sun, 5:30 AM</strong></div><div><label>Return</label><strong>Same Day, ~8 PM</strong></div><div><label>From Nairobi</label><strong class="price">KES 9,500 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Morning</div><div class="itin-dt">Depart Nairobi 5:30 AM</div><div class="itin-dd">Drive to Amboseli (~3 hrs). Morning game drive. Elephant sightings and Kilimanjaro views.</div></div>
+            <div class="itin-day"><div class="itin-dl">Midday</div><div class="itin-dt">Lunch at Lodge</div><div class="itin-dd">Lunch stop inside or near the park.</div></div>
+            <div class="itin-day"><div class="itin-dl">Afternoon</div><div class="itin-dt">Afternoon Drive &rarr; Nairobi</div><div class="itin-dd">Second game drive. Depart for Nairobi, arrive ~8 PM. Includes: transport, park fees, lunch.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Amboseli%20Day%20Safari." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d2" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#2e7d4f,var(--green))"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">2 Days / 1 Night</span></div>
+          <h3 class="dep-title">Naivasha &amp; Hell&rsquo;s Gate</h3>
+          <p class="dep-desc">Flamingo lake boat rides and cycling through Hell&rsquo;s Gate Gorge.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Every Saturday</strong></div><div><label>Return</label><strong>Sunday Afternoon</strong></div><div><label>From Nairobi</label><strong class="price">KES 14,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1 &mdash; Saturday</div><div class="itin-dt">Nairobi &rarr; Naivasha</div><div class="itin-dd">Drive to lake. Afternoon boat ride (hippos, flamingos). Lakeside camp overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2 &mdash; Sunday</div><div class="itin-dt">Hell&rsquo;s Gate &rarr; Nairobi</div><div class="itin-dd">Cycling or walking through the gorge. Lunch. Return Nairobi afternoon. Includes: transport, accommodation, boat ride, park fees.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Naivasha%20departure." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d1" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#5a3e1b,var(--gold))"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">2 Days / 1 Night</span></div>
+          <h3 class="dep-title">Nanyuki &amp; Ol Pejeta</h3>
+          <p class="dep-desc">Ol Pejeta Conservancy, Mt. Kenya views, and the last northern white rhinos on Earth.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Bi-weekly Friday</strong></div><div><label>Return</label><strong>Sunday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 18,500 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Nanyuki</div><div class="itin-dd">Drive through Mt. Kenya forest. Check in Nanyuki. Equator visit. Dinner overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Ol Pejeta Full Day</div><div class="itin-dd">Full day at Ol Pejeta. Game drives, northern white rhino, chimp sanctuary. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Morning Drive &rarr; Nairobi</div><div class="itin-dd">Morning drive. Depart for Nairobi, arrive evening. Includes: transport, accommodation, park fees, meals.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Nanyuki%20departure." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d2" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#8b3a0f,#c05a1a)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
+          <h3 class="dep-title">Tsavo East &amp; West</h3>
+          <p class="dep-desc">Kenya&rsquo;s largest park &mdash; red elephants, Mzima Springs, and vast untamed wilderness.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>1st &amp; 3rd Friday</strong></div><div><label>Return</label><strong>Sunday Night</strong></div><div><label>From Nairobi</label><strong class="price">KES 26,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Tsavo West</div><div class="itin-dd">Drive to Tsavo West. Afternoon game drive near Mzima Springs. Overnight at camp.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Tsavo West &rarr; Tsavo East</div><div class="itin-dd">Morning drive. Cross to Tsavo East. Red elephants at Voi River. Sundowner. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Morning Drive &rarr; Nairobi</div><div class="itin-dd">Early drive. Depart for Nairobi, arrive evening. Includes: transport, 2 nights, park fees, meals.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Tsavo%20Safari." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d3" data-region="nairobi">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,var(--gm),#3a8f5a)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">1 Day Trip</span></div>
+          <h3 class="dep-title">Lake Nakuru Day Safari</h3>
+          <p class="dep-desc">Rhinos, flamingos, leopards and stunning Rift Valley scenery just 2 hrs from Nairobi.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Every Sunday, 5 AM</strong></div><div><label>Return</label><strong>Same Day, ~7 PM</strong></div><div><label>From Nairobi</label><strong class="price">KES 8,500 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Morning</div><div class="itin-dt">Depart 5:00 AM</div><div class="itin-dd">Drive to Nakuru (~2.5 hrs). Enter park. Flamingos, white &amp; black rhinos, waterbuck, leopards.</div></div>
+            <div class="itin-day"><div class="itin-dl">Afternoon</div><div class="itin-dt">Full Circuit &rarr; Nairobi</div><div class="itin-dd">Lake circuit game drive. Lunch at viewpoint. Depart for Nairobi, arrive ~7 PM. Includes: transport, park fees, lunch.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20join%20the%20Lake%20Nakuru%20Day%20Safari." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <!-- WESTERN -->
+      <div class="dep-card reveal" data-region="western">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#1a6b8a,#2899c4)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
+          <h3 class="dep-title">Kisumu &amp; Lake Victoria</h3>
+          <p class="dep-desc">Kenya&rsquo;s port city on Africa&rsquo;s largest lake. Sunsets over the Winam Gulf and fresh Nile perch.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>2nd Friday monthly</strong></div><div><label>Return</label><strong>Sunday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 20,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Kisumu</div><div class="itin-dd">Drive via Nakuru and Kericho Tea Country. Sunset boat ride on Lake Victoria. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Kisumu City &amp; Lake</div><div class="itin-dd">Impala Sanctuary, Kit Mikayi rock, Kisumu Museum. Afternoon boat fishing. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Morning &rarr; Nairobi</div><div class="itin-dd">Morning at leisure. Depart for Nairobi. Includes: transport, accommodation, boat ride.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Kisumu%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d1" data-region="western">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#0e5c7a,#1a8fbf)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
+          <h3 class="dep-title">Rusinga &amp; Takawiri Islands</h3>
+          <p class="dep-desc">Two pristine islands on Lake Victoria &mdash; remote, peaceful, and Kenya&rsquo;s best-kept secret.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>2nd Friday monthly</strong></div><div><label>Return</label><strong>Sunday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 28,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Rusinga Island</div><div class="itin-dd">Drive to Mbita. Cross to Rusinga Island. Evening on the lake. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Takawiri Island Day Trip</div><div class="itin-dd">Boat to Takawiri. Swimming, birding, beach. Tom Mboya memorial on Rusinga. Sundowner lakeside.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Island &rarr; Nairobi</div><div class="itin-dd">Morning on island. Depart for Nairobi. Includes: transport, accommodation, boat trips, meals.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Rusinga%20%26%20Takawiri%20Islands%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d2" data-region="western">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#1e6b2e,#2d9940)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">2 Days / 1 Night</span></div>
+          <h3 class="dep-title">Kakamega Rainforest</h3>
+          <p class="dep-desc">East Africa&rsquo;s last tropical rainforest. Rare birds, primates, and ancient trees in Western Kenya.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>3rd Friday monthly</strong></div><div><label>Return</label><strong>Sunday Afternoon</strong></div><div><label>From Nairobi</label><strong class="price">KES 16,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Kakamega</div><div class="itin-dd">Drive via Nakuru. Afternoon guided forest walk. De Brazza&rsquo;s monkeys, hornbills, rare butterflies. Overnight at forest lodge.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Forest &rarr; Nairobi</div><div class="itin-dd">Early morning bird walk. Breakfast. Depart for Nairobi, arrive afternoon. Includes: transport, accommodation, guided walks.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Kakamega%20Rainforest%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d3" data-region="western">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#5c4000,var(--gold))"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">2 Days / 1 Night</span></div>
+          <h3 class="dep-title">Eldoret &amp; Kerio Valley</h3>
+          <p class="dep-desc">Rift Valley escarpment, Kerio Valley viewpoint, and home of Kenya&rsquo;s world-famous athletes.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>4th Friday monthly</strong></div><div><label>Return</label><strong>Sunday Afternoon</strong></div><div><label>From Nairobi</label><strong class="price">KES 14,500 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Eldoret</div><div class="itin-dd">Drive via Nakuru. Kerio Valley escarpment stop. Check in Eldoret. Evening experience. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Eldoret &rarr; Nairobi</div><div class="itin-dd">Morning at leisure. Optional athletes&rsquo; training ground run. Scenic Rift Valley drive back. Arrive Nairobi afternoon. Includes: transport, accommodation.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Eldoret%20%26%20Kerio%20Valley%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <!-- COAST -->
+      <div class="dep-card reveal" data-region="coast">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#006994,#00a8cc)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
+          <h3 class="dep-title">Diani Beach Escape</h3>
+          <p class="dep-desc">Kenya&rsquo;s most celebrated beach &mdash; white sand, turquoise Indian Ocean, vibrant coastal life.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>Every Friday</strong></div><div><label>Return</label><strong>Sunday Night</strong></div><div><label>From Nairobi</label><strong class="price">KES 28,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Fly / Drive to Diani</div><div class="itin-dd">Transfer to Diani. Beachfront check-in. Seafood dinner. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Full Beach Day</div><div class="itin-dd">Optional: snorkelling, kite surfing, Colobus forest walk, or Shimba Hills. Beach at leisure. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Beach &rarr; Nairobi</div><div class="itin-dd">Morning swim. Check out. Return Nairobi. Includes: transport, 2 nights, breakfast daily.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Diani%20Beach%20Escape." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d1" data-region="coast">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#7a5c00,var(--glt))"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots open">Open</span><span class="dep-dur">3 Days / 2 Nights</span></div>
+          <h3 class="dep-title">Mombasa &amp; Malindi</h3>
+          <p class="dep-desc">Fort Jesus, Old Town spice routes, Malindi Marine Park, and warm Indian Ocean waters.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>2nd &amp; 4th Friday</strong></div><div><label>Return</label><strong>Sunday Night</strong></div><div><label>From Nairobi</label><strong class="price">KES 24,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Mombasa</div><div class="itin-dd">Fly or overnight bus to Mombasa. Fort Jesus, Old Town walking tour, spice market. Overnight Mombasa.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Mombasa &rarr; Malindi</div><div class="itin-dd">Coast road drive. Stop at Watamu Marine Park. Arrive Malindi. Snorkelling, beach time. Overnight Malindi.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Malindi &rarr; Nairobi</div><div class="itin-dd">Morning beach. Depart Nairobi. Includes: transport, 2 nights, city tour, park entry.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Mombasa%20%26%20Malindi%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <div class="dep-card reveal d2" data-region="coast">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#8b4513,#cd853f)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots monthly">Once Monthly</span><span class="dep-dur">4 Days / 3 Nights</span></div>
+          <h3 class="dep-title">Lamu Island Retreat</h3>
+          <p class="dep-desc">A UNESCO World Heritage town. No cars, ancient Swahili architecture, dhow sailing, total tranquillity.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>1st Friday monthly</strong></div><div><label>Return</label><strong>Monday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 38,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Fly Nairobi &rarr; Lamu</div><div class="itin-dd">Short flight to Manda. Boat to Lamu Town. Swahili guesthouse check-in. Dhow sunset cruise.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Lamu Town &amp; Shela Beach</div><div class="itin-dd">Old town walking tour, fort, donkey sanctuary. Afternoon at Shela Beach. Fresh seafood dinner.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Island &amp; Mangrove Sail</div><div class="itin-dd">Full day dhow sailing. Manda Toto island. Mangrove channels. Beach barbecue.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 4</div><div class="itin-dt">Lamu &rarr; Nairobi</div><div class="itin-dd">Morning at leisure. Fly back Nairobi. Includes: flights, 3 nights, dhow trips, guided tour.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Lamu%20Island%20Retreat." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+      <!-- CROSS-BORDER -->
+      <div class="dep-card reveal" data-region="border">
+        <div class="dep-stripe" style="background:linear-gradient(90deg,#4a0000,#8b1a1a)"></div>
+        <div class="dep-body">
+          <div class="dep-meta"><span class="dep-spots monthly">Once Monthly</span><span class="dep-dur">4 Days / 3 Nights</span></div>
+          <h3 class="dep-title">Moshi &amp; Arusha, Tanzania</h3>
+          <p class="dep-desc">Kilimanjaro base visits, Arusha National Park, and the gateway to the Serengeti &mdash; from Nairobi.</p>
+          <div class="dep-info"><div><label>Departure</label><strong>3rd Friday monthly</strong></div><div><label>Return</label><strong>Monday Evening</strong></div><div><label>From Nairobi</label><strong class="price">KES 42,000 pp</strong></div></div>
+          <button class="itin-toggle" onclick="toggleItin(this)">&#128466; Sample Itinerary <span class="arr">&#9660;</span></button>
+          <div class="itin-body">
+            <div class="itin-day"><div class="itin-dl">Day 1</div><div class="itin-dt">Nairobi &rarr; Arusha</div><div class="itin-dd">Drive via Namanga border. Arrive Arusha. Evening city tour and coffee plantation. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 2</div><div class="itin-dt">Arusha National Park</div><div class="itin-dd">Full day Arusha NP. Flamingos at Momela Lakes, giraffe, Ngurdoto Crater. Mt Meru backdrop. Overnight.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 3</div><div class="itin-dt">Moshi &amp; Kilimanjaro Gate</div><div class="itin-dd">Drive to Moshi. Visit Kilimanjaro Marangu Gate. Chagga cultural tour. Overnight Moshi.</div></div>
+            <div class="itin-day"><div class="itin-dl">Day 4</div><div class="itin-dt">Moshi &rarr; Nairobi</div><div class="itin-dd">Morning. Drive back via Namanga. Arrive Nairobi evening. Includes: transport, 3 nights, park fees, border assistance, meals.</div></div>
+          </div>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Moshi%20%26%20Arusha%20trip." target="_blank" class="dep-btn">Book / Customise This Trip &rarr;</a>
+        </div>
+      </div>
+
+    </div>
+    <div class="dep-note reveal">
+      <p>Need different dates or a completely custom trip? We&rsquo;ll build it around you.</p>
+      <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20request%20a%20custom%20private%20departure%20for%20my%20group." target="_blank" class="btn btn-gold">Request a Custom Trip</a>
+    </div>
+  </div>
+</section>
+
+<section id="staycation">
+  <div class="con">
+    <div class="stay-grid">
+      <div class="stay-left">
+        <span class="lbl reveal">New Experience</span>
+        <h2 class="stitle reveal" style="text-align:left">Luxury Staycations<br>in <em>Nairobi</em></h2>
+        <p class="stay-desc reveal">You don&rsquo;t always need to leave the city to escape. We design immersive private experiences inside handpicked Nairobi spaces &mdash; from romantic hideaways to elegant birthday surprises.</p>
+        <div class="stay-feats reveal">
+          <div class="stay-feat"><div class="stay-dot"></div>Romantic couple escapes &amp; anniversary setups</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Luxury birthday planning &amp; d&eacute;cor</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Private Airbnb experiences, fully curated</div>
+          <div class="stay-feat"><div class="stay-dot"></div>Chef, photography &amp; wellness add-ons available</div>
+        </div>
+        <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Staycation." target="_blank" class="btn btn-green reveal">Book Your Staycation &rarr;</a>
+        <div class="stay-photos reveal">
+          <div class="stay-photo"><img src="images/stay-1.jpg" alt="Luxury room" loading="lazy" /></div>
+          <div class="stay-photo"><img src="images/stay-2.jpg" alt="Romantic setup" loading="lazy" /></div>
+          <div class="stay-photo"><img src="images/stay-3.jpg" alt="Luxury suite" loading="lazy" /></div>
+        </div>
+      </div>
+      <div class="stay-pkgs">
+        <div class="stay-pkg reveal">
+          <div class="stay-hd"><div class="stay-pn">Getaway Package</div></div>
+          <div class="stay-price">KES 12,000 <small>/ night</small></div>
+          <ul class="stay-items">
+            <li>One-night private Airbnb (2 guests)</li><li>Welcome drinks &amp; snacks basket</li>
+            <li>Curated d&eacute;cor setup (petals, candles)</li><li>Breakfast delivered to room</li>
+            <li>Dedicated WhatsApp host support</li>
+          </ul>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Getaway%20Staycation%20Package." target="_blank" class="btn-og" style="width:100%;justify-content:center">Book This Package</a>
+        </div>
+        <div class="stay-pkg feat reveal d1">
+          <div class="stay-hd"><div class="stay-pn">Premium Experience</div><span class="stay-pb">Best Choice</span></div>
+          <div class="stay-price">KES 25,000 <small>/ night</small></div>
+          <ul class="stay-items">
+            <li>Two-night luxury Airbnb (sleeps 4)</li><li>Private chef &mdash; 3-course dinner included</li>
+            <li>Full luxury d&eacute;cor &amp; balloon setup</li><li>Breakfast &amp; brunch both mornings</li>
+            <li>1-hour professional photography session</li><li>Personalised welcome note &amp; flowers</li>
+            <li>Airport/hotel transfers included</li>
+          </ul>
+          <a href="https://wa.me/254720265805?text=Hi%2C%20I%27d%20like%20the%20Premium%20Staycation%20Package." target="_blank" class="btn btn-gold" style="width:100%;justify-content:center">Book This Package</a>
+        </div>
+        <div class="addons reveal d2">
+          <h4>&#10024; Available Add-Ons</h4>
+          <div class="atags">
+            <span class="atag">&#127874; Birthday Cake</span><span class="atag">&#128247; Photo Session</span>
+            <span class="atag">&#128104;&#8205;&#127859; Private Chef</span><span class="atag">&#127801; Extra D&eacute;cor</span>
+            <span class="atag">&#129494; Spa Treatment</span><span class="atag">&#127870; Champagne</span>
+            <span class="atag">&#128663; Transfer Service</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="con">
+    <div class="shdr reveal">
+      <span class="lbl">Real Stories</span>
+      <h2 class="stitle">What Our <em>Travelers</em> Say</h2>
+      <p class="sdesc">Every review is a memory we helped create.</p>
+    </div>
+    <div class="tg">
+      <div class="tc reveal d1"><div class="tq">&ldquo;</div><p class="tt">From the moment we arrived at the Mara, everything was perfectly arranged. Our guide knew exactly where the big cats were. One of the most powerful experiences of my life.</p><div class="ta"><div class="tav">AK</div><div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="tn">Amara Kiptoo</div><div class="tr">3-Day Masai Mara Safari</div></div></div></div>
+      <div class="tc reveal d2"><div class="tq">&ldquo;</div><p class="tt">We booked the Premium Staycation for our anniversary and I was completely blown away. The room was decorated beautifully, the chef prepared an incredible dinner, and the photos were stunning.</p><div class="ta"><div class="tav">NM</div><div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="tn">Njeri &amp; Michael</div><div class="tr">Anniversary Staycation, Nairobi</div></div></div></div>
+      <div class="tc reveal d3"><div class="tq">&ldquo;</div><p class="tt">Organising a corporate retreat for 22 people is no joke &mdash; but Ferols handled everything seamlessly. The activities, accommodation, and logistics were all spot-on. Our staff is still talking about it.</p><div class="ta"><div class="tav">JO</div><div><div class="ts">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="tn">James Odhiambo</div><div class="tr">Corporate Group &mdash; Nanyuki Retreat</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="cta-final">
+  <div class="cta-bg"></div>
+  <div class="con">
+    <div class="cta-in">
+      <span class="lbl reveal" style="color:var(--gold)">Ready to Explore?</span>
+      <h2 class="cta-h2 reveal">Your Next Adventure<br>Is <em>One Click Away</em></h2>
+      <p class="cta-p reveal">Speak to our team on WhatsApp and we&rsquo;ll design the perfect East African experience around you &mdash; your budget, your pace, your dream.</p>
+      <div class="cta-btns reveal">
+        <a href="https://wa.me/254720265805?text=Hello%21%20I%27d%20like%20to%20book%20with%20Ferols%20Tours." target="_blank" class="btn-wa">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style="width:20px;height:20px;fill:white;flex-shrink:0"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+          WhatsApp Booking
+        </a>
+        <a href="#experiences" class="btn-ow">View All Packages</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="con">
+    <div class="fg">
+      <div>
+        <div class="flogo"><img src="logo.jpg" alt="Ferols Tours and Safaris" /><span class="ftag">Premium East African Travel</span></div>
+        <p class="fab2">Nairobi-based travel brand specialising in safaris, weekend getaways, and luxury staycations across Kenya and East Africa. We turn dreams into memories.</p>
+        <div class="fsocs">
+          <a href="https://www.facebook.com/ferolstoursandsafaris" target="_blank" class="fsoc">f</a>
+          <a href="https://www.instagram.com/ferolstoursandsafaris" target="_blank" class="fsoc">ig</a>
+          <a href="https://www.tiktok.com/@ferolstoursandsafaris" target="_blank" class="fsoc">tt</a>
+        </div>
+      </div>
+      <div class="fc"><h5>Explore</h5><ul class="fl"><li><a href="#experiences">Day Safaris</a></li><li><a href="#experiences">Weekend Getaways</a></li><li><a href="#departures">Weekly Departures</a></li><li><a href="#staycation">Staycations</a></li><li><a href="https://wa.me/254720265805" target="_blank">Corporate Travel</a></li></ul></div>
+      <div class="fc"><h5>Destinations</h5><ul class="fl"><li><a href="#destinations">Masai Mara</a></li><li><a href="#destinations">Amboseli</a></li><li><a href="#destinations">Naivasha</a></li><li><a href="#departures">Western Kenya</a></li><li><a href="#departures">Coast &amp; Islands</a></li></ul></div>
+      <div class="fc"><h5>Contact Us</h5><div class="fct">
+        <div class="fci"><div class="fci-i">&#128205;</div><div class="fci-t">Norfolk Towers, Kijabe Street<br>Nairobi, Kenya</div></div>
+        <div class="fci"><div class="fci-i">&#128222;</div><div class="fci-t">+254 720 265805<br>+254 732 978537</div></div>
+        <div class="fci"><div class="fci-i">&#9993;&#65039;</div><div class="fci-t">info@ferolstours.com</div></div>
+        <div class="fci"><div class="fci-i">&#127758;</div><div class="fci-t">www.ferolstours.com</div></div>
+      </div></div>
+    </div>
+    <div class="fbot"><div class="fcp">&copy; 2025 Ferols Tours and Safaris. All rights reserved.</div><div class="flv">Made with <span>&#9829;</span> in Nairobi, Kenya</div></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/254720265805?text=Hello%21%20I%27d%20like%20to%20book%20with%20Ferols%20Tours." target="_blank" class="wa-fab" title="Chat on WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/></svg>
+</a>
+
+<script>
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>60);});
+document.getElementById('navToggle').addEventListener('click',function(){document.getElementById('mobMenu').classList.add('open');});
+document.getElementById('mobClose').addEventListener('click',function(){document.getElementById('mobMenu').classList.remove('open');});
+document.querySelectorAll('.ml').forEach(function(l){l.addEventListener('click',function(){document.getElementById('mobMenu').classList.remove('open');});});
+var ro=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
+document.querySelectorAll('.dep-reg').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    document.querySelectorAll('.dep-reg').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    var r=btn.getAttribute('data-region');
+    document.querySelectorAll('.dep-card').forEach(function(c){c.style.display=(r==='all'||c.getAttribute('data-region')===r)?'':'none';});
+  });
+});
+function toggleItin(btn){
+  var body=btn.nextElementSibling;
+  var isOpen=body.classList.contains('open');
+  document.querySelectorAll('.itin-body').forEach(function(b){b.classList.remove('open');});
+  document.querySelectorAll('.itin-toggle').forEach(function(b){b.classList.remove('open');});
+  if(!isOpen){body.classList.add('open');btn.classList.add('open');}
+}
+</script>
+</body>
+</html>
